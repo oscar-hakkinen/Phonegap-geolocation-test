@@ -24,18 +24,25 @@ function getPosition() {
 //called when the position is successfully determined
 function successPosition(position) {
 	
-	//You can find out more details about what the position obejct contains here:
+	//You can find out more details about what the position object contains here:
 	// http://www.w3schools.com/html/html5_geolocation.asp
 	
 
 	//lets get some stuff out of the position object
 	var time = position.timestamp;
 	var latitude = position.coords.latitude;
-	
+    var longitude = position.coords.longitude;
+	var unixtime = new Date (position.timestamp);
+    var date = unixtime.toDateString();
+    
+    
 	//OK. Now we want to update the display with the correct values
-	$('#time').val("Recieved data at " + time);
-	$('#lattext').val("I should contain the latitude data...");
+	$('#time').val(date);
+	$('#lattext').val(latitude);
+    $('#longtext').val(longitude);
 	
+    
+    
 }
 
 //called if the position is not obtained correctly
